@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTypeIdColumnToUsersTable extends Migration
+class AddUserIdColumnToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddTypeIdColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('type_id')->default(1);#view post
+        Schema::table('posts', function (Blueprint $table) {
+            $table->unsignedInteger('user_id')->default(1);#view post
+
         });
     }
 
@@ -25,8 +26,8 @@ class AddTypeIdColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('type_id');
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('user_id');
 
         });
     }
