@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        if(DB::table('types')->get()->count() == 0)
+        if(DB::table('users')->get()->count() == 0)
         {
             DB::table('users')->insert([
                 'name' => 'view',
