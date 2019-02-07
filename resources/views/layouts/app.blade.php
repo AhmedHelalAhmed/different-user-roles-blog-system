@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body>
     <div id="app">
@@ -73,6 +74,25 @@
         </nav>
 
         <main class="py-4">
+            <section class="container">
+                @if(Session::has('message'))
+                    <p class="alert alert-dismissible {{ Session::get('alert-class', 'alert-info') }}">
+                        {{ Session::get('message') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    </p>
+
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+            @endif
+            <!-- /.row -->
+            </section>
             @yield('content')
         </main>
     </div>
