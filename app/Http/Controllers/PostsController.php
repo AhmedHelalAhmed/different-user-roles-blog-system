@@ -26,6 +26,7 @@ class PostsController extends Controller
      */
     public function index()
     {
+
         $data = $this->model->all();
         return view('posts.index', ['posts' => $data]);
     }
@@ -56,6 +57,7 @@ class PostsController extends Controller
      */
     public function create()
     {
+
         return view('posts.create');
     }
 
@@ -67,6 +69,7 @@ class PostsController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+
         // create record and pass in only fields that are fillable
         $this->model->create($request->only($this->model->getModel()->fillable));
         return redirect(route('posts.index'));
@@ -82,6 +85,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+
+
         $data = $this->model->show($id);
         // handle if the record not found
         if($data instanceof JsonResponse)

@@ -18,4 +18,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'PostsController@index')->name('home');
-Route::resource('posts', 'PostsController');
+
+
+Route::get('posts', 'PostsController@index')->name('posts.index')->middleware('auth');
+Route::get('/posts/{id}', 'PostsController@show')->name('posts.show')->middleware('auth');
+
+
+
+
+
+Route::get('posts/create', 'PostsController@create')->name('photos.create')->middleware(['auth','PostUser']);
+Route::post('posts', 'PostsController@store')->name('posts.store')->middleware(['auth','PostUser']);
+
+
+
+
+Route::get('/posts/{id}/edit', 'PostsController@edit')->name('posts.edit')->middleware(['auth','EditUser']);
+Route::put('/posts/{id}', 'PostsController@update')->name('posts.update')->middleware(['auth','EditUser']);

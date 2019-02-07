@@ -27,7 +27,7 @@ class UpdatePostRequest extends FormRequest
     {
 
         try {
-            $id = $this->route('post');
+            $id = $this->route('id');
             $post = Post::find($id);
             return [
                 'title' => [

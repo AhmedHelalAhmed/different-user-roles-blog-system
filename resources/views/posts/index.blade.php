@@ -4,11 +4,14 @@
     <div class="container break-word">
         <div class="row">
             <div class="col-12 text-center mb-5">
+                @can('create', App\Post::class)
+
                 <a
                     class="btn btn-success pull-right"
                     href="{{url("/posts/create")}}"
                     role="button"> new post
                 </a>
+                @endcan
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-8 col-md-offset-2 align-content-center">
@@ -17,9 +20,13 @@
                         <div class="jumbotron">
                             <div class="panel-heading">
                                 <a href="{{url("/posts/".$post->id."/edit")}}">
-                                   <span
+                                    @can('update', $post)
+
+                                    <span
                                        style="float: right;color: white !important;"
                                        class="badge badge-secondary left">edit</span>
+                                    @endcan
+
                                 </a>
 
                                 <h1 class="panel-title text-center">{{$post->title}}</h1>
